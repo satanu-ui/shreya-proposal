@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 💖 Romantic Proposal & Dream Date Website for Shreya
 
 An interactive, responsive web application crafted specifically for proposing to **Shreya** with a dream date adventure. It runs on any device (**Android, iOS, Windows, Mac**) with touch-optimized controls, cute animations, watercolor kiss motifs, and persistent database storage.
@@ -102,3 +103,7 @@ npm run dev
 # http://localhost:3000
 # http://localhost:3000/admin (Passcode: 143)
 ```
+=======
+# shreya-proposal
+A proposal for my girlfriend
+>>>>>>> 7cd5522c3212e86158ab4f24693136106fc2c512
