@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS date_responses (
 ALTER TABLE date_responses ENABLE ROW LEVEL SECURITY;
 
 -- Allow public inserts so Shreya can submit without signing in
+DROP POLICY IF EXISTS "Allow public inserts" ON date_responses;
 CREATE POLICY "Allow public inserts"
 ON date_responses
 FOR INSERT
@@ -38,6 +39,7 @@ TO anon, authenticated
 WITH CHECK (true);
 
 -- Allow public read (or protected via API)
+DROP POLICY IF EXISTS "Allow read" ON date_responses;
 CREATE POLICY "Allow read"
 ON date_responses
 FOR SELECT

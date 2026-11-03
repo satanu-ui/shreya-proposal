@@ -3,9 +3,20 @@ import { DateResponse } from './types';
 import fs from 'fs';
 import path from 'path';
 
+// Helper to sanitize Supabase URL (strip /rest/v1 or trailing slashes if accidentally pasted)
+function cleanSupabaseUrl(url?: string): string | undefined {
+  if (!url) return undefined;
+  return url.trim().replace(/\/rest\/v1\/?$/, '').replace(/\/+$/, '');
+}
+
 // Supabase client initialization (optional, if configured)
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_KEY;
+const rawSupabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+const supabaseUrl = cleanSupabaseUrl(rawSupabaseUrl);
+const supabaseKey = (
+  process.env.SUPABASE_SERVICE_ROLE_KEY || 
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 
+  process.env.SUPABASE_KEY
+)?.trim();
 
 const supabase = (supabaseUrl && supabaseKey) 
   ? createClient(supabaseUrl, supabaseKey) 
